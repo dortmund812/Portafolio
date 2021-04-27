@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!-- LINK -->
+	<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+	<title>Portafolio | {{title}}</title>
+</head>
+<body>
+	<style>
+		@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+		/*VARIABLES*/
+		:root{
+			--header-height: 3rem;
+			--nav-width: 324px;
+			/*FONT*/
+			--font-medium: 500;
+			--font-semi-bold: 600;
+			--font-bold: 700;
+			/*COLOR*/
+			--first-color: #CC4B2C;
+			--first-color-dark: #662616;
+			--first-color-darken: #290F09;
+			--text-color: #54423D;
+			--first-color-light: #EAE7E6;
+			--first-color-lighten: #FFFAFA;
+			/*TYPOGRAFIA*/
+			--body-font: 'Poppins', sans-serif;
+			--h1-font-size: 1.5rem;
+			--h2-font-size: 1.25rem;
+			--h3-font-size: 1rem;
+			--normal-font-size: .938rem;
+			--small-font-size: .813rem;
+			--smaller-font-size: .75rem;
+			/*MAGENES*/
+			--mb-1: .5rem;
+			--mb-2: 1rem;
+			--mb-3: 1.5rem;
+			--mb-4: 2rem;
+			--mb-5: 2.5rem;
+			/*Z INDEX*/
+			--z-fixed: 100;
+		}
+
+		@media screen and (min-width: 768px) {
+			:root{
+				--h1-font-size: 2.25rem;
+				--h2-font-size: 15rem;
+				--h3-font-size: 1.25rem;
+				--normal-font-size: 1rem;
+				--small-font-size: .875rem;
+				--smaller-font-size: .813rem;
+			}
+		}
+		/*ELEMENTS*/
+		*,::before,::after{
+			box-sizing: border-box;
+		}
+		html{
+			scroll-behavior: smooth;
+		}
+		body{
+			margin: var(--header-height) 0 0 0;
+			font-family: var(--body-font);
+			font-size: var(--normal-font-size);
+			font-weight: var(--font-medium);
+			background-color: var(--first-color-lighten);
+			color: var(--text-color);
+			line-height: 1.6;
+		}
+		h1,h2,h3,p{
+			margin: 0;
+		}
+		h3{
+			font-weight: var(--font-semi-bold);
+		}
+		ul{
+			margin: 0;
+			padding: 0;
+			list-style: none;
+		}
+		a{
+			text-decoration: none;
+			color: var(--text-color);
+		}
+		img{
+			max-width: 100%;
+			height: auto;
+			display: block;
+		}
+		/*CLASS CSS*/
+		.section{
+			padding: 4rem 0 2rem;
+		}
+		.section-title{
+			font-size: var(--h1-font-size);
+			color: var(--first-color);
+			margin-bottom: var(--mb-3);
+			margin-bottom: ;
+			text-align: center;
+		}
+		.section-subtitle{
+			display: block;
+			font-size: var(--small-font-size);
+			color: var(--first-color-darken);
+			text-align: center;
+			font-weight: var(--font-bold);
+			margin-bottom: .25rem;
+		}
+		/*LAYOUT*/
+		.bd-grid{
+			max-width: 1024px;
+			display: grid;
+			grid-template-columns: 100%;
+			column-gap: 2rem;
+			width: calc(100% - 2rem);
+			margin-left: var(--mb-2);
+			margin-right: var(--mb-2);
+		}
+		.l-header{
+			width: 100%;
+			position: fixed;
+			top: 0;
+			left: 0;
+			z-index: var(--z-fixed);
+			background-color: var(--first-color-lighten);
+			box-shadow: 0 2px 4px rgba(0,0,0,.1);
+		}
+		/*NAV*/
+		.nav{
+			height: var(--header-height);
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+		}
+		.nav__menu{
+			position: fixed;
+			top: 0;
+			left: -100%;
+			width: 90%;
+			height: 100vh;
+			padding: 3rem;
+			display: flex;
+			align-items: center;
+			background-color: var(--first-color);
+			transition: .5s;
+		}
+		.nav__close{
+			position: absolute;
+			top: 1rem;
+			right: 1rem;
+			font-size: 2rem;
+			color: var(--first-color-dark);
+			cursor: pointer;
+		}
+		.nav__item{
+			margin-bottom: var(--mb-4);
+		}
+		.nav__link{
+			font-size: 1rem;
+			text-transform: uppercase;
+			color: var(--first-color-lighten);
+			font-weight: var(--font-bold);
+			transition: .3s;
+		}
+		.nav__link:hover{
+			color: var(--text-color);
+		}
+		.nav__toggle{
+			color: var(--first-color-dark);
+			font-size: 1.3rem;
+			cursor: pointer;
+		}
+		/*SHOW*/
+		.show{
+			left: 0;
+		}
+		/*ACTIVE*/
+		.active{
+			color: var(--text-color);
+		}
+		/*HOME*/
+		.home__container{
+			height: calc(100vh - var(--header-height));
+			align-items: center;
+		}
+		.home__data{
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			height: max-content;
+			text-align: center;
+		}
+		.home__img{
+			padding-top: 1.3rem;
+			padding-left: .8rem;
+			width: 160px;
+			height: 160px;
+			background-color: var(--first-color);
+			border-radius: 50%;
+			overflow: hidden;
+			margin-bottom: var(--mb-2);
+		}
+		.home__img img{
+			width: 155px;
+		}
+		.home__title{
+			font-size: var(--h1-font-size);
+			color: var(--first-color);
+			font-weight: var(--first-color-dark);
+			margin-bottom: var(--mb-5);
+		}
+		.home__social{
+			margin-bottom: 5rem;
+		}
+		.home__social-link{
+			display: inline-flex;
+			background-color: var(--first-color);
+			color: var(--first-color-lighten);
+			font-size: 1.1rem;
+			border-radius: 50%;
+			padding: .40rem;
+			margin: 0 var(--mb-1);
+			transition: .3s;
+		}
+		.home__social-link:hover{
+			background-color: var(--first-color-dark);
+		}
+		.home__button{
+			width: 100%;
+		}
+		/*BUTTONS*/
+		.button{
+			display: inline-block;
+			background-color: var(--first-color);
+			color: var(--first-color-lighten);
+			padding: 1rem 2rem;
+			font-weight: var(--font-semi-bold);
+			border-radius: .5rem;
+			transition: .3s;
+		}
+		.button:hover{
+			background-color: var(--first-color-dark);
+		}
+		.button__light{
+			background-color: var(--first-color-lighten);
+			color: var(--first-color);
+		}
+		.button__light:hover{
+			color: var(--first-color-lighten);
+		}
+		/*ABOUT*/
+		.about__container{
+			grid-row-gap: 2rem;
+		}
+		.about__data{
+			text-align: center;
+		}
+		.about__description{
+			margin-bottom: var(--mb-4);
+		}
+		.about__img{
+			width: 150px;
+			border-radius: .5rem;
+			margin: 0 auto;
+		}
+		.about__information{
+			margin-bottom: var(--mb-4);
+		}
+		.about__information-title{
+			font-size: var(--h3-font-size);
+			color: var(--first-color-dark);
+			margin-bottom: var(--mb-2);
+		}
+		.about__information-data{
+			display: flex;
+			align-items: center;
+			padding-left: 1.5rem;
+			margin-bottom: var(--mb-3);
+		}
+		.about__information-icon{
+			font-size: 1.5rem;
+			color: var(--first-color);
+			margin-right: var(--mb-4);
+		}
+		.about__information-subtitle{
+			display: block;
+			font-weight: var(--font-semi-bold);
+		}
+		.about__information-subtitle-small{
+			font-size: var(--small-font-size);
+		}
+	</style>
+
+	<!-- HEADER -->
+	<header class="l-header">
+		<nav class="nav bd-grid">
+			<div class="nav__toggle" id="nav-toggle">
+				<i class="fas fa-bars"></i>
+			</div>
+
+			<div>
+				<a href="#" class="nav__logo">David</a>
+			</div>
+
+			<div class="nav__menu" id="nav-menu">
+				<div class="nav__close" id="nav-close">
+					<i class="fas fa-times"></i>
+				</div>
+
+				<ul class="nav__list">
+					<li class="nav__item"><a href="#home" class="nav__link active">Home</a></li>
+					<li class="nav__item"><a href="#about" class="nav__link">Más de mi</a></li>
+					<li class="nav__item"><a href="#skills" class="nav__link">Habiliades</a></li>
+					<li class="nav__item"><a href="#services" class="nav__link">Servicios</a></li>
+					<li class="nav__item"><a href="#works" class="nav__link">Trabajos</a></li>
+					<li class="nav__item"><a href="#contact" class="nav__link">Contacto</a></li>
+				</ul>
+			</div>
+		</nav>
+	</header>
+
+	<main class="l-main">
+		<!-- ================== HOME ================== -->
+		<section class="home" id="home">
+			<div class="home__container bd-grid">
+				<div class="home__data">
+					<div class="home__img">
+						<img src="static\img\perfil.png" alt="">
+					</div>
+
+					<h1 class="home__title">David García</h1>
+					<span class="home__profession">Desarrollador</span>
+
+					<div class="home__social">
+						<a href="#" class="home__social-link"><i class="fab fa-linkedin-in"></i></a>
+						<a href="#" class="home__social-link"><i class="fab fa-github"></i></a>
+						<a href="#" class="home__social-link"><i class="fab fa-dribbble"></i></a>
+						<a href="#" class="home__social-link"><i class="fab fa-whatsapp"></i></a>
+					</div>
+
+					<a download="" href="#" class="button home__button">Descargar HV</a>
+				</div>
+			</div>
+		</section>	
+
+		<!-- ================== ABOUT ================== -->
+		<section class="about section" id="about">
+			<span class="section-subtitle">My intro</span>
+			<h2 class="section-title">About Me</h2>
+
+			<div class="about__container bd-grid">
+				<div class="about__data">
+					<p class="about__description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid corrupti autem doloribus, reprehenderit, ipsam at perspiciatis odit nam nostrum cupiditate perferendis rem magni dignissimos recusandae distinctio. Architecto suscipit est nisi!</p>
+					<img src="static\img\about.png" alt="" class="about__img">
+				</div>
+
+				<div>
+					<div class="about__information">
+						<h3 class="about__information-title">Información</h3>
+
+						<div class="about__information-data">
+							<i class="far fa-user about__information-icon"></i>
+							<span>David García</span>
+						</div>
+
+						<div class="about__information-data">
+							<i class="fas fa-phone about__information-icon"></i>
+							<span>999-888-777</span>
+						</div>
+
+						<div class="about__information-data">
+							<i class="fas fa-envelope-open-text about__information-icon"></i>
+							<span>correo@prueba.com</span>
+						</div>
+					</div>
+
+					<div class="about__information">
+						<h3 class="about__information-title">Experiencia</h3>
+
+						<div class="about__information-data">
+							<i class="fas fa-medal about__information-icon"></i>
+							<div>
+								<span class="about__information-subtitle">1 Año 4 Meses</span>
+								<span class="about__information-subtitle">Experiencia</span>
+							</div>
+						</div>
+
+						<div class="about__information-data">
+							<i class="fas fa-briefcase about__information-icon"></i>
+							<div>
+								<span class="about__information-subtitle">5+ Proyectos</span>
+								<span class="about__information-subtitle">Completados</span>
+							</div>
+						</div>
+
+						<div class="about__information-data">
+							<i class="fas fa-headset about__information-icon"></i>
+							<div>
+								<span class="about__information-subtitle">Support</span>
+								<span class="about__information-subtitle">24/7</span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- ================== SKILLS ================== -->
+		<section class="skills section" id="skills">
+			<span class="section-subtitle">Mis habilidades</span>
+			<h2 class="section-title">Mi experiencia en area</h2>
+
+			<!-- SKILLS FRONTEND -->
+			<div class="skills__content bd-grid">
+				<div class="skills__subtitle">Fronten</div>
+				<!-- HTML -->
+				<div class="skills__data">
+					<span class="skills__name">Html/Css</span>
+					<span class="skills__number">85%</span>
+					<span class="skills__bar skills__html"></span>
+				</div>
+				<!-- JAVASCRIPT -->
+				<div class="skills__data">
+					<span class="skills__name">JavaScript</span>
+					<span class="skills__number">80%</span>
+					<span class="skills__bar skills__html"></span>
+				</div>
+				<!-- REACT -->
+				<div class="skills__data">
+					<span class="skills__name">React</span>
+					<span class="skills__number">35%</span>
+					<span class="skills__bar skills__html"></span>
+				</div>
+				<!-- ANGULAR -->
+				<div class="skills__data">
+					<span class="skills__name">Angular</span>
+					<span class="skills__number">35%</span>
+					<span class="skills__bar skills__html"></span>
+				</div>
+			</div>
+			<!-- SKILLS BACKEND -->
+			<div class="skills__content bd-grid">
+				<div class="skills__subtitle">Backend</div>
+				<!-- HTML -->
+				<div class="skills__data">
+					<span class="skills__name">PHP</span>
+					<span class="skills__number">85%</span>
+					<span class="skills__bar skills__html"></span>
+				</div>
+				<!-- JAVASCRIPT -->
+				<div class="skills__data">
+					<span class="skills__name">JavaScript</span>
+					<span class="skills__number">80%</span>
+					<span class="skills__bar skills__html"></span>
+				</div>
+				<!-- REACT -->
+				<div class="skills__data">
+					<span class="skills__name">React</span>
+					<span class="skills__number">35%</span>
+					<span class="skills__bar skills__html"></span>
+				</div>
+				<!-- ANGULAR -->
+				<div class="skills__data">
+					<span class="skills__name">Angular</span>
+					<span class="skills__number">35%</span>
+					<span class="skills__bar skills__html"></span>
+				</div>
+			</div>
+		</section>
+	</main>
+
+	<!-- JQUERY -->
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+	<!-- SCRIPTS -->
+	<script>
+		$(document).ready(function(){
+			// SHOW
+			$('#nav-toggle').on('click', function(e){
+				e.preventDefault();
+				$('#nav-menu').toggleClass('show');
+			});
+			// CLOSE
+			$('#nav-close').on('click', function(e){
+				e.preventDefault();
+				$('#nav-menu').removeClass('show');
+			});
+			// REMOVE MENU
+			$('.nav__link').on('click', function(e){
+				e.preventDefault();
+				$('#nav-menu').removeClass('show');
+			});
+			// SCROLL
+			$(window).on('scroll', function(){
+				const scrollY = window.pageYOffset;
+
+				$('section').each(function(index, element){
+					const sectionHeight = element.offsetHeight;
+					const sectionTop = element.offsetTop -50;
+					const sectionId = element.getAttribute('id');
+
+					if(scrollY > sectionTop && scrollY <= sectionTop + sectionHeight){
+						$('.nav__menu a[href="#'+sectionId+'"]').addClass('active');
+					} else {
+						$('.nav__menu a[href="#'+sectionId+'"]').removeClass('active');
+					}
+				});
+			});
+		});
+	</script>
+</body>
+</html>
