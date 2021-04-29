@@ -291,6 +291,145 @@
 		.about__information-subtitle-small{
 			font-size: var(--small-font-size);
 		}
+		/*SKILLS*/
+		.skills_container{
+			grid-row-gap: 2rem;
+		}
+		.skills__subtitle{
+			font-size: vavr(--h3-font-size);
+			color: var(--first-color-dark);
+			margin-bottom: var(--mb-2);
+		}
+		.skills__data{
+			position: relative;
+			display: flex;
+			justify-content: space-between;
+			margin: 0 var(--mb-2);
+			margin-bottom: var(--mb-4);
+		}
+		.skills__name{
+			text-transform: uppercase;
+		}
+		.skills__bar{
+			position: absolute;
+			bottom: -.75rem;
+			height: .25rem;
+			background-color: var(--first-color);
+		}
+		/*EDUCACION*/
+		.education__container{
+			grid-row-gap: 2rem;
+		}
+		.education__content{
+			display: grid;
+			grid-template-columns: 1fr max-content 1fr;
+		}
+		.education__year,
+		.education__race{
+			font-size: var(--h3--font-size);
+			margin-bottom: .25rem;
+		}
+		.education__university,
+		.education__specialty{
+			display: block;
+			font-size: var(--smaller-font-size);
+		}
+		.education__year,
+		.education__university{
+			text-align: right;
+		}
+		.education__time{
+			padding: 0 1rem;
+			justify-self: center;
+		}
+		.education__rounder{
+			position: relative;
+			display: inline-block;
+			width: 12px;
+			height: 12px;
+			background-color: var(--first-color);
+			border-radius: 50%;
+		}
+		.education__rounder::before{
+			content: '';
+			position: absolute;
+			transform: translate(-4px, -4px);
+			width: 20px;
+			height: 20px;
+			border: 1px solid var(--first-color);
+			border-radius: 50%;
+		}
+		.education__line{
+			display: block;
+			height: 90%;
+			width: 2px;
+			background-color: var(--first-color);
+			transform: translate(5px,-4px);
+		}
+		/*========================SERVICIOS========================*/
+		.services__container{
+			grid-row-gap: 2rem;
+		}
+		.services__content{
+			padding: 1.5rem .5rem;
+			border: 2px solid var(--first-color);
+			border-radius: .5rem;
+			text-align: center;
+		}
+		.services__icon{
+			width: 4rem;
+			height: 4rem;
+			font-size: 2rem;
+			line-height: 4rem;
+			background-color: var(--first-color);
+			color: var(--first-color-lighten);
+			border-radius: 50%;
+			margin-bottom: var(--mb-2);
+		}
+		.services__title{
+			font-size: 1.25rem;
+			color: var(--first-color-dark);
+			margin-bottom: var(--mb-1);
+		}
+		.services__content,
+		.services__icon,
+		.services__description,
+		.services__title{
+			transition: .5s;
+		}
+		.services__content:hover{
+			background-color: var(--first-color);
+		}
+		.services__content:hover .services__icon{
+			background-color: var(--first-color-lighten);
+			color: var(--first-color);
+		}
+		.services__content:hover .services__title,
+		.services__content:hover .services__description{
+			color: var(--first-color-lighten);
+		}
+		/*PROJECT IN MIND*/
+		.project{
+			background-color: var(--first-color);
+			padding-bottom: 0;
+		}
+		.project__container{
+			grid-row-gap: 2rem;
+		}
+		.project__data{
+			text-align: center;
+		}
+		.project__title,
+		.project__description{
+			color: var(--first-color-lighten);
+		}
+		.project__description{
+			margin-bottom: var(--mb-4);
+		}
+		.project__img{
+			width: 220px;
+			justify-self: center;
+		}
 	</style>
 
 	<!-- HEADER -->
@@ -413,31 +552,31 @@
 			<h2 class="section-title">Mi experiencia en area</h2>
 
 			<!-- SKILLS FRONTEND -->
-			<div class="skills__content bd-grid">
+			<div class="skills_container bd-grid">
 				<div class="skills__subtitle">Fronten</div>
 				<!-- HTML -->
 				<div class="skills__data">
 					<span class="skills__name">Html/Css</span>
 					<span class="skills__number">85%</span>
-					<span class="skills__bar skills__html"></span>
+					<span class="skills__bar" data-percent="85"></span>
 				</div>
 				<!-- JAVASCRIPT -->
 				<div class="skills__data">
 					<span class="skills__name">JavaScript</span>
 					<span class="skills__number">80%</span>
-					<span class="skills__bar skills__html"></span>
+					<span class="skills__bar" data-percent="80"></span>
 				</div>
 				<!-- REACT -->
 				<div class="skills__data">
 					<span class="skills__name">React</span>
 					<span class="skills__number">35%</span>
-					<span class="skills__bar skills__html"></span>
+					<span class="skills__bar" data-percent="35"></span>
 				</div>
 				<!-- ANGULAR -->
 				<div class="skills__data">
 					<span class="skills__name">Angular</span>
 					<span class="skills__number">35%</span>
-					<span class="skills__bar skills__html"></span>
+					<span class="skills__bar" data-percent="35"></span>
 				</div>
 			</div>
 			<!-- SKILLS BACKEND -->
@@ -446,26 +585,143 @@
 				<!-- HTML -->
 				<div class="skills__data">
 					<span class="skills__name">PHP</span>
-					<span class="skills__number">85%</span>
-					<span class="skills__bar skills__html"></span>
+					<span class="skills__number">90%</span>
+					<span class="skills__bar" data-percent="90"></span>
 				</div>
 				<!-- JAVASCRIPT -->
 				<div class="skills__data">
-					<span class="skills__name">JavaScript</span>
-					<span class="skills__number">80%</span>
-					<span class="skills__bar skills__html"></span>
+					<span class="skills__name">Python</span>
+					<span class="skills__number">65%</span>
+					<span class="skills__bar" data-percent="65"></span>
 				</div>
 				<!-- REACT -->
 				<div class="skills__data">
-					<span class="skills__name">React</span>
-					<span class="skills__number">35%</span>
-					<span class="skills__bar skills__html"></span>
+					<span class="skills__name">Java</span>
+					<span class="skills__number">65%</span>
+					<span class="skills__bar" data-percent="65"></span>
 				</div>
 				<!-- ANGULAR -->
 				<div class="skills__data">
-					<span class="skills__name">Angular</span>
+					<span class="skills__name">NodeJS</span>
 					<span class="skills__number">35%</span>
-					<span class="skills__bar skills__html"></span>
+					<span class="skills__bar" data-percent="35"></span>
+				</div>
+			</div>
+		</section>
+
+		<!-- ================== EDUCACION ================== -->
+		<section class="education section">
+			<span class="section-subtitle">Educación</span>
+			<h2 class="section-title">Mi Educación</h2>
+
+			<div class="education__container bd-grid">
+				<div class="education__content">
+					<div>
+						<h3 class="education__year">2010 - 2013</h3>
+						<span class="education__university">Universidad</span>
+					</div>
+
+					<div class="education__time">
+						<span class="education__rounder"></span>
+						<span class="education__line"></span>
+					</div>
+
+					<div>
+						<h3 class="education__race">Titulo</h3>
+						<span class="education__specialty">Especialidad</span>
+					</div>
+				</div>
+
+				<div class="education__content">
+					<div>
+						<h3 class="education__year">2017 - 2020</h3>
+						<span class="education__university">Universidad</span>
+					</div>
+
+					<div class="education__time">
+						<span class="education__rounder"></span>
+						<span class="education__line"></span>
+					</div>
+
+					<div>
+						<h3 class="education__race">Titulo</h3>
+						<span class="education__specialty">Especialidad</span>
+					</div>
+				</div>
+
+				<div class="education__content">
+					<div>
+						<h3 class="education__year">2020 - 2022</h3>
+						<span class="education__university">Universidad</span>
+					</div>
+
+					<div class="education__time">
+						<span class="education__rounder"></span>
+						<span class="education__line"></span>
+					</div>
+
+					<div>
+						<h3 class="education__race">Titulo</h3>
+						<span class="education__specialty">Especialidad</span>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- ================== SERVICIOS ================== -->
+		<section class="secvices section" id="services">
+			<span class="section-subtitle">Servicios</span>
+			<h2 class="section-title">Mi trabajo</h2>
+
+			<div class="services__container bd-grid">
+				<div class="services__content">
+					<i class="fas fa-code services__icon"></i>
+					<h3 class="services__title">Desarrollador Web</h3>
+					<p class="services__description">Lorem ipsum dolor, sit amet consectetur adipisicing, elit. Magnam adipisci dicta aperiam distinctio iure error.</p>
+				</div>
+
+				<div class="services__content">
+					<i class="fas fa-sitemap services__icon"></i>
+					<h3 class="services__title">Bases de Datos</h3>
+					<p class="services__description">Lorem ipsum dolor, sit amet consectetur adipisicing, elit. Magnam adipisci dicta aperiam distinctio iure error.</p>
+				</div>
+
+				<div class="services__content">
+					<i class="fas fa-mobile-alt services__icon"></i>
+					<h3 class="services__title">Desarrollador Movil</h3>
+					<p class="services__description">Lorem ipsum dolor, sit amet consectetur adipisicing, elit. Magnam adipisci dicta aperiam distinctio iure error.</p>
+				</div>
+			</div>
+		</section>
+
+		<!-- =============== PROJECT IN MIND =============== -->
+		<section class="project section">
+			<div class="project__container bd-grid">
+				<div class="project__data">
+					<div class="section-title project__title">Aplicación para Estudiantes</div>
+					<p class="project__description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Non aspernatur itaque voluptatibus fugiat expedita porro distinctio iure, dignissimos eveniet illo vitae, iusto, harum aperiam rerum atque eius molestiae, sapiente alias.</p>
+					<a href="#contact" class="button button_light">Contacame</a>
+				</div>
+
+				<img src="static\img\projectmind.png" alt="" class="project__img">
+			</div>
+		</section>
+
+		<!-- ==================== WORKS ==================== -->
+		<section class="works section" id="works">
+			<span class="section-subtitle">Mi Portafolio</span>
+			<h2 class="section-title">Trabajos Recientes</h2>
+
+			<div class="work__container bd-grid">
+				<div class="works__img">
+					<img src="static\img\work1.jpg" alt="">
+				</div>
+
+				<div class="works__data">
+					<a href="#" class="works_link">
+						<i class="fas fa-link"></i>
+					</a>
+					<span class="works__title">Work 1</span>
 				</div>
 			</div>
 		</section>
@@ -490,6 +746,10 @@
 			$('.nav__link').on('click', function(e){
 				e.preventDefault();
 				$('#nav-menu').removeClass('show');
+			});
+			// PERCENTAGE SKILLS
+			$('.skills__bar').each(function(indice, element){
+				$(this).width($(this).attr('data-percent')+'%');
 			});
 			// SCROLL
 			$(window).on('scroll', function(){
