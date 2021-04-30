@@ -5,434 +5,14 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<!-- LINK -->
 	<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+	{% load static %}
+	<link rel="stylesheet" href="{% static 'css/index/index.css' %}">
 	<title>Portafolio | {{title}}</title>
 </head>
 <body>
-	<style>
-		@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
-		/*VARIABLES*/
-		:root{
-			--header-height: 3rem;
-			--nav-width: 324px;
-			/*FONT*/
-			--font-medium: 500;
-			--font-semi-bold: 600;
-			--font-bold: 700;
-			/*COLOR*/
-			--first-color: #CC4B2C;
-			--first-color-dark: #662616;
-			--first-color-darken: #290F09;
-			--text-color: #54423D;
-			--first-color-light: #EAE7E6;
-			--first-color-lighten: #FFFAFA;
-			/*TYPOGRAFIA*/
-			--body-font: 'Poppins', sans-serif;
-			--h1-font-size: 1.5rem;
-			--h2-font-size: 1.25rem;
-			--h3-font-size: 1rem;
-			--normal-font-size: .938rem;
-			--small-font-size: .813rem;
-			--smaller-font-size: .75rem;
-			/*MAGENES*/
-			--mb-1: .5rem;
-			--mb-2: 1rem;
-			--mb-3: 1.5rem;
-			--mb-4: 2rem;
-			--mb-5: 2.5rem;
-			/*Z INDEX*/
-			--z-fixed: 100;
-		}
-
-		@media screen and (min-width: 768px) {
-			:root{
-				--h1-font-size: 2.25rem;
-				--h2-font-size: 15rem;
-				--h3-font-size: 1.25rem;
-				--normal-font-size: 1rem;
-				--small-font-size: .875rem;
-				--smaller-font-size: .813rem;
-			}
-		}
-		/*ELEMENTS*/
-		*,::before,::after{
-			box-sizing: border-box;
-		}
-		html{
-			scroll-behavior: smooth;
-		}
-		body{
-			margin: var(--header-height) 0 0 0;
-			font-family: var(--body-font);
-			font-size: var(--normal-font-size);
-			font-weight: var(--font-medium);
-			background-color: var(--first-color-lighten);
-			color: var(--text-color);
-			line-height: 1.6;
-		}
-		h1,h2,h3,p{
-			margin: 0;
-		}
-		h3{
-			font-weight: var(--font-semi-bold);
-		}
-		ul{
-			margin: 0;
-			padding: 0;
-			list-style: none;
-		}
-		a{
-			text-decoration: none;
-			color: var(--text-color);
-		}
-		img{
-			max-width: 100%;
-			height: auto;
-			display: block;
-		}
-		/*CLASS CSS*/
-		.section{
-			padding: 4rem 0 2rem;
-		}
-		.section-title{
-			font-size: var(--h1-font-size);
-			color: var(--first-color);
-			margin-bottom: var(--mb-3);
-			margin-bottom: ;
-			text-align: center;
-		}
-		.section-subtitle{
-			display: block;
-			font-size: var(--small-font-size);
-			color: var(--first-color-darken);
-			text-align: center;
-			font-weight: var(--font-bold);
-			margin-bottom: .25rem;
-		}
-		/*LAYOUT*/
-		.bd-grid{
-			max-width: 1024px;
-			display: grid;
-			grid-template-columns: 100%;
-			column-gap: 2rem;
-			width: calc(100% - 2rem);
-			margin-left: var(--mb-2);
-			margin-right: var(--mb-2);
-		}
-		.l-header{
-			width: 100%;
-			position: fixed;
-			top: 0;
-			left: 0;
-			z-index: var(--z-fixed);
-			background-color: var(--first-color-lighten);
-			box-shadow: 0 2px 4px rgba(0,0,0,.1);
-		}
-		/*NAV*/
-		.nav{
-			height: var(--header-height);
-			display: flex;
-			justify-content: space-between;
-			align-items: center;
-		}
-		.nav__menu{
-			position: fixed;
-			top: 0;
-			left: -100%;
-			width: 90%;
-			height: 100vh;
-			padding: 3rem;
-			display: flex;
-			align-items: center;
-			background-color: var(--first-color);
-			transition: .5s;
-		}
-		.nav__close{
-			position: absolute;
-			top: 1rem;
-			right: 1rem;
-			font-size: 2rem;
-			color: var(--first-color-dark);
-			cursor: pointer;
-		}
-		.nav__item{
-			margin-bottom: var(--mb-4);
-		}
-		.nav__link{
-			font-size: 1rem;
-			text-transform: uppercase;
-			color: var(--first-color-lighten);
-			font-weight: var(--font-bold);
-			transition: .3s;
-		}
-		.nav__link:hover{
-			color: var(--text-color);
-		}
-		.nav__toggle{
-			color: var(--first-color-dark);
-			font-size: 1.3rem;
-			cursor: pointer;
-		}
-		/*SHOW*/
-		.show{
-			left: 0;
-		}
-		/*ACTIVE*/
-		.active{
-			color: var(--text-color);
-		}
-		/*HOME*/
-		.home__container{
-			height: calc(100vh - var(--header-height));
-			align-items: center;
-		}
-		.home__data{
-			display: flex;
-			flex-direction: column;
-			align-items: center;
-			height: max-content;
-			text-align: center;
-		}
-		.home__img{
-			padding-top: 1.3rem;
-			padding-left: .8rem;
-			width: 160px;
-			height: 160px;
-			background-color: var(--first-color);
-			border-radius: 50%;
-			overflow: hidden;
-			margin-bottom: var(--mb-2);
-		}
-		.home__img img{
-			width: 155px;
-		}
-		.home__title{
-			font-size: var(--h1-font-size);
-			color: var(--first-color);
-			font-weight: var(--first-color-dark);
-			margin-bottom: var(--mb-5);
-		}
-		.home__social{
-			margin-bottom: 5rem;
-		}
-		.home__social-link{
-			display: inline-flex;
-			background-color: var(--first-color);
-			color: var(--first-color-lighten);
-			font-size: 1.1rem;
-			border-radius: 50%;
-			padding: .40rem;
-			margin: 0 var(--mb-1);
-			transition: .3s;
-		}
-		.home__social-link:hover{
-			background-color: var(--first-color-dark);
-		}
-		.home__button{
-			width: 100%;
-		}
-		/*BUTTONS*/
-		.button{
-			display: inline-block;
-			background-color: var(--first-color);
-			color: var(--first-color-lighten);
-			padding: 1rem 2rem;
-			font-weight: var(--font-semi-bold);
-			border-radius: .5rem;
-			transition: .3s;
-		}
-		.button:hover{
-			background-color: var(--first-color-dark);
-		}
-		.button__light{
-			background-color: var(--first-color-lighten);
-			color: var(--first-color);
-		}
-		.button__light:hover{
-			color: var(--first-color-lighten);
-		}
-		/*ABOUT*/
-		.about__container{
-			grid-row-gap: 2rem;
-		}
-		.about__data{
-			text-align: center;
-		}
-		.about__description{
-			margin-bottom: var(--mb-4);
-		}
-		.about__img{
-			width: 150px;
-			border-radius: .5rem;
-			margin: 0 auto;
-		}
-		.about__information{
-			margin-bottom: var(--mb-4);
-		}
-		.about__information-title{
-			font-size: var(--h3-font-size);
-			color: var(--first-color-dark);
-			margin-bottom: var(--mb-2);
-		}
-		.about__information-data{
-			display: flex;
-			align-items: center;
-			padding-left: 1.5rem;
-			margin-bottom: var(--mb-3);
-		}
-		.about__information-icon{
-			font-size: 1.5rem;
-			color: var(--first-color);
-			margin-right: var(--mb-4);
-		}
-		.about__information-subtitle{
-			display: block;
-			font-weight: var(--font-semi-bold);
-		}
-		.about__information-subtitle-small{
-			font-size: var(--small-font-size);
-		}
-		/*SKILLS*/
-		.skills_container{
-			grid-row-gap: 2rem;
-		}
-		.skills__subtitle{
-			font-size: vavr(--h3-font-size);
-			color: var(--first-color-dark);
-			margin-bottom: var(--mb-2);
-		}
-		.skills__data{
-			position: relative;
-			display: flex;
-			justify-content: space-between;
-			margin: 0 var(--mb-2);
-			margin-bottom: var(--mb-4);
-		}
-		.skills__name{
-			text-transform: uppercase;
-		}
-		.skills__bar{
-			position: absolute;
-			bottom: -.75rem;
-			height: .25rem;
-			background-color: var(--first-color);
-		}
-		/*EDUCACION*/
-		.education__container{
-			grid-row-gap: 2rem;
-		}
-		.education__content{
-			display: grid;
-			grid-template-columns: 1fr max-content 1fr;
-		}
-		.education__year,
-		.education__race{
-			font-size: var(--h3--font-size);
-			margin-bottom: .25rem;
-		}
-		.education__university,
-		.education__specialty{
-			display: block;
-			font-size: var(--smaller-font-size);
-		}
-		.education__year,
-		.education__university{
-			text-align: right;
-		}
-		.education__time{
-			padding: 0 1rem;
-			justify-self: center;
-		}
-		.education__rounder{
-			position: relative;
-			display: inline-block;
-			width: 12px;
-			height: 12px;
-			background-color: var(--first-color);
-			border-radius: 50%;
-		}
-		.education__rounder::before{
-			content: '';
-			position: absolute;
-			transform: translate(-4px, -4px);
-			width: 20px;
-			height: 20px;
-			border: 1px solid var(--first-color);
-			border-radius: 50%;
-		}
-		.education__line{
-			display: block;
-			height: 90%;
-			width: 2px;
-			background-color: var(--first-color);
-			transform: translate(5px,-4px);
-		}
-		/*========================SERVICIOS========================*/
-		.services__container{
-			grid-row-gap: 2rem;
-		}
-		.services__content{
-			padding: 1.5rem .5rem;
-			border: 2px solid var(--first-color);
-			border-radius: .5rem;
-			text-align: center;
-		}
-		.services__icon{
-			width: 4rem;
-			height: 4rem;
-			font-size: 2rem;
-			line-height: 4rem;
-			background-color: var(--first-color);
-			color: var(--first-color-lighten);
-			border-radius: 50%;
-			margin-bottom: var(--mb-2);
-		}
-		.services__title{
-			font-size: 1.25rem;
-			color: var(--first-color-dark);
-			margin-bottom: var(--mb-1);
-		}
-		.services__content,
-		.services__icon,
-		.services__description,
-		.services__title{
-			transition: .5s;
-		}
-		.services__content:hover{
-			background-color: var(--first-color);
-		}
-		.services__content:hover .services__icon{
-			background-color: var(--first-color-lighten);
-			color: var(--first-color);
-		}
-		.services__content:hover .services__title,
-		.services__content:hover .services__description{
-			color: var(--first-color-lighten);
-		}
-		/*PROJECT IN MIND*/
-		.project{
-			background-color: var(--first-color);
-			padding-bottom: 0;
-		}
-		.project__container{
-			grid-row-gap: 2rem;
-		}
-		.project__data{
-			text-align: center;
-		}
-		.project__title,
-		.project__description{
-			color: var(--first-color-lighten);
-		}
-		.project__description{
-			margin-bottom: var(--mb-4);
-		}
-		.project__img{
-			width: 220px;
-			justify-self: center;
-		}
-	</style>
-
-	<!-- HEADER -->
+	<!-- ======================================================== -->
+	<!-- ======================== HEADER ======================== -->
+	<!-- ======================================================== -->
 	<header class="l-header">
 		<nav class="nav bd-grid">
 			<div class="nav__toggle" id="nav-toggle">
@@ -461,7 +41,9 @@
 	</header>
 
 	<main class="l-main">
-		<!-- ================== HOME ================== -->
+		<!-- ======================================================== -->
+		<!-- ========================= HOME ========================= -->
+		<!-- ======================================================== -->
 		<section class="home" id="home">
 			<div class="home__container bd-grid">
 				<div class="home__data">
@@ -484,7 +66,9 @@
 			</div>
 		</section>	
 
-		<!-- ================== ABOUT ================== -->
+		<!-- ========================================================= -->
+		<!-- ========================= ABOUT ========================= -->
+		<!-- ========================================================= -->
 		<section class="about section" id="about">
 			<span class="section-subtitle">My intro</span>
 			<h2 class="section-title">About Me</h2>
@@ -546,70 +130,76 @@
 			</div>
 		</section>
 
-		<!-- ================== SKILLS ================== -->
+		<!-- ======================================================== -->
+		<!-- ======================== SKILLS ======================== -->
+		<!-- ======================================================== -->
 		<section class="skills section" id="skills">
 			<span class="section-subtitle">Mis habilidades</span>
 			<h2 class="section-title">Mi experiencia en area</h2>
 
-			<!-- SKILLS FRONTEND -->
-			<div class="skills_container bd-grid">
-				<div class="skills__subtitle">Fronten</div>
-				<!-- HTML -->
-				<div class="skills__data">
-					<span class="skills__name">Html/Css</span>
-					<span class="skills__number">85%</span>
-					<span class="skills__bar" data-percent="85"></span>
+			<div class="skills__container bd-grid">
+				<!-- SKILLS FRONTEND -->
+				<div class="skills__content">
+					<div class="skills__subtitle">Fronten</div>
+					<!-- HTML -->
+					<div class="skills__data">
+						<span class="skills__name">Html/Css</span>
+						<span class="skills__number">85%</span>
+						<span class="skills__bar" data-percent="85"></span>
+					</div>
+					<!-- JAVASCRIPT -->
+					<div class="skills__data">
+						<span class="skills__name">JavaScript</span>
+						<span class="skills__number">80%</span>
+						<span class="skills__bar" data-percent="80"></span>
+					</div>
+					<!-- REACT -->
+					<div class="skills__data">
+						<span class="skills__name">React</span>
+						<span class="skills__number">35%</span>
+						<span class="skills__bar" data-percent="35"></span>
+					</div>
+					<!-- ANGULAR -->
+					<div class="skills__data">
+						<span class="skills__name">Angular</span>
+						<span class="skills__number">35%</span>
+						<span class="skills__bar" data-percent="35"></span>
+					</div>
 				</div>
-				<!-- JAVASCRIPT -->
-				<div class="skills__data">
-					<span class="skills__name">JavaScript</span>
-					<span class="skills__number">80%</span>
-					<span class="skills__bar" data-percent="80"></span>
-				</div>
-				<!-- REACT -->
-				<div class="skills__data">
-					<span class="skills__name">React</span>
-					<span class="skills__number">35%</span>
-					<span class="skills__bar" data-percent="35"></span>
-				</div>
-				<!-- ANGULAR -->
-				<div class="skills__data">
-					<span class="skills__name">Angular</span>
-					<span class="skills__number">35%</span>
-					<span class="skills__bar" data-percent="35"></span>
-				</div>
-			</div>
-			<!-- SKILLS BACKEND -->
-			<div class="skills__content bd-grid">
-				<div class="skills__subtitle">Backend</div>
-				<!-- HTML -->
-				<div class="skills__data">
-					<span class="skills__name">PHP</span>
-					<span class="skills__number">90%</span>
-					<span class="skills__bar" data-percent="90"></span>
-				</div>
-				<!-- JAVASCRIPT -->
-				<div class="skills__data">
-					<span class="skills__name">Python</span>
-					<span class="skills__number">65%</span>
-					<span class="skills__bar" data-percent="65"></span>
-				</div>
-				<!-- REACT -->
-				<div class="skills__data">
-					<span class="skills__name">Java</span>
-					<span class="skills__number">65%</span>
-					<span class="skills__bar" data-percent="65"></span>
-				</div>
-				<!-- ANGULAR -->
-				<div class="skills__data">
-					<span class="skills__name">NodeJS</span>
-					<span class="skills__number">35%</span>
-					<span class="skills__bar" data-percent="35"></span>
+				<!-- SKILLS BACKEND -->
+				<div class="skills__content">
+					<div class="skills__subtitle">Backend</div>
+					<!-- HTML -->
+					<div class="skills__data">
+						<span class="skills__name">PHP</span>
+						<span class="skills__number">90%</span>
+						<span class="skills__bar" data-percent="90"></span>
+					</div>
+					<!-- JAVASCRIPT -->
+					<div class="skills__data">
+						<span class="skills__name">Python</span>
+						<span class="skills__number">65%</span>
+						<span class="skills__bar" data-percent="65"></span>
+					</div>
+					<!-- REACT -->
+					<div class="skills__data">
+						<span class="skills__name">Java</span>
+						<span class="skills__number">65%</span>
+						<span class="skills__bar" data-percent="65"></span>
+					</div>
+					<!-- ANGULAR -->
+					<div class="skills__data">
+						<span class="skills__name">NodeJS</span>
+						<span class="skills__number">35%</span>
+						<span class="skills__bar" data-percent="35"></span>
+					</div>
 				</div>
 			</div>
 		</section>
 
-		<!-- ================== EDUCACION ================== -->
+		<!-- ======================================================== -->
+		<!-- ======================= EDUCATION ====================== -->
+		<!-- ======================================================== -->
 		<section class="education section">
 			<span class="section-subtitle">Educación</span>
 			<h2 class="section-title">Mi Educación</h2>
@@ -668,7 +258,9 @@
 			</div>
 		</section>
 
-		<!-- ================== SERVICIOS ================== -->
+		<!-- ======================================================== -->
+		<!-- ======================= SERVICES ======================= -->
+		<!-- ======================================================== -->
 		<section class="secvices section" id="services">
 			<span class="section-subtitle">Servicios</span>
 			<h2 class="section-title">Mi trabajo</h2>
@@ -694,80 +286,157 @@
 			</div>
 		</section>
 
-		<!-- =============== PROJECT IN MIND =============== -->
+		<!-- ======================================================== -->
+		<!-- ===================== PROJECT MIND ===================== -->
+		<!-- ======================================================== -->
 		<section class="project section">
 			<div class="project__container bd-grid">
 				<div class="project__data">
 					<div class="section-title project__title">Aplicación para Estudiantes</div>
 					<p class="project__description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Non aspernatur itaque voluptatibus fugiat expedita porro distinctio iure, dignissimos eveniet illo vitae, iusto, harum aperiam rerum atque eius molestiae, sapiente alias.</p>
-					<a href="#contact" class="button button_light">Contacame</a>
+					<a href="#contact" class="button button__light">Contacame</a>
 				</div>
 
 				<img src="static\img\projectmind.png" alt="" class="project__img">
 			</div>
 		</section>
 
-		<!-- ==================== WORKS ==================== -->
+		<!-- ========================================================= -->
+		<!-- ========================= WORKS ========================= -->
+		<!-- ========================================================= -->
 		<section class="works section" id="works">
 			<span class="section-subtitle">Mi Portafolio</span>
 			<h2 class="section-title">Trabajos Recientes</h2>
 
-			<div class="work__container bd-grid">
+			<div class="works__container bd-grid">
+
 				<div class="works__img">
 					<img src="static\img\work1.jpg" alt="">
+					<div class="works__data">
+						<a href="#" class="works__link">
+							<i class="fas fa-link"></i>
+						</a>
+						<span class="works__title">Work 1</span>
+					</div>
 				</div>
 
-				<div class="works__data">
-					<a href="#" class="works_link">
-						<i class="fas fa-link"></i>
-					</a>
-					<span class="works__title">Work 1</span>
+				<div class="works__img">
+					<img src="static\img\work2.jpg" alt="">
+					<div class="works__data">
+						<a href="#" class="works__link">
+							<i class="fas fa-link"></i>
+						</a>
+						<span class="works__title">Work 2</span>
+					</div>
+				</div>
+
+				<div class="works__img">
+					<img src="static\img\work3.jpg" alt="">
+					<div class="works__data">
+						<a href="#" class="works__link">
+							<i class="fas fa-link"></i>
+						</a>
+						<span class="works__title">Work 3</span>
+					</div>
+				</div>
+
+				<div class="works__img">
+					<img src="static\img\work4.jpg" alt="">
+					<div class="works__data">
+						<a href="#" class="works__link">
+							<i class="fas fa-link"></i>
+						</a>
+						<span class="works__title">Work 4</span>
+					</div>
+				</div>
+
+				<div class="works__img">
+					<img src="static\img\work5.jpg" alt="">
+					<div class="works__data">
+						<a href="#" class="works__link">
+							<i class="fas fa-link"></i>
+						</a>
+						<span class="works__title">Work 5</span>
+					</div>
+				</div>
+
+			</div>
+		</section>
+
+		<!-- ========================================================= -->
+		<!-- ======================== CONTACT ======================== -->
+		<!-- ========================================================= -->
+		<section class="contact section" id="contact">
+			<span class="section-subtitle">Contactame</span>
+			<h2 class="section-title">Ponte en contacto</h2>
+
+			<div class="contact__container bd-grid">
+				<form action="" method="POST" class="contact__form">
+					<div class="contact__inputs">
+						<input type="text" class="contact__input" placeholder="Nombre">
+						<input type="email" class="contact__input" placeholder="Correo">
+					</div>
+
+					<input type="text" class="contact__input" placeholder="Proyecto">
+
+					<textarea class="contact__input" placeholder="Mensaje"></textarea>
+
+					<input type="submit" value="Enviar" class="button contact__button">
+				</form>
+
+				<div>
+					<div class="contact__info">
+						<h3 class="contact__subtitle">Call me</h3>
+						<span class="contact__text">999-888-777</span>
+						<span class="contact__text">999-888-777</span>
+					</div>
+
+					<div class="contact__info">
+						<h3 class="contact__subtitle">E-mail</h3>
+						<span class="contact__text">correo@correo.com</span>
+						<span class="contact__text">correo2@correo.com</span>
+					</div>
+
+					<div class="contact__info">
+						<h3 class="contact__subtitle">Location</h3>
+						<span class="contact__text">Av. Bolivar #123</span>
+						<span class="contact__text">Bogotá D.C - Colombia</span>
+					</div>
 				</div>
 			</div>
 		</section>
+
+		<!-- ======================================================== -->
+		<!-- ======================== FOOTER ======================== -->
+		<!-- ======================================================== -->
+		<footer class="footer section">
+			<div class="footer__container bd-grid">
+				<h2 class="footer__title">David</h2>
+				<p class="footer__description">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Non facilis, nulla, tempora commodi sequi necessitatibus ex. Aperiam sit molestias eaque fugiat cum veritatis, magnam quod corrupti id corporis, dolorum sapiente.</p>
+
+				<div class="footer__social">
+					<a href="#" class="footer__link"><i class="fab fa-facebook-f"></i></a>
+					<a href="#" class="footer__link"><i class="fab fa-twitter"></i></a>
+					<a href="#" class="footer__link"><i class="fab fa-instagram"></i></a>
+				</div>
+
+				<p class="footer__copy">Todos los derechos reservados &copy; - {% now "Y" %}</p>
+			</div>
+		</footer>
 	</main>
+
+
+	<!-- ============================================================================= -->
+	<!-- ========================= CARLOS DAVID GARCIA LOPEZ ========================= -->
+	<!-- ============================== PYTHON - DJANGO ============================== -->
+	<!-- ================================ VERSION 1.1 ================================ -->
+	<!-- ============================ www.mipaginaweb.com ============================ -->
+	<!-- ============================================================================= -->
+
 
 	<!-- JQUERY -->
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 	<!-- SCRIPTS -->
-	<script>
-		$(document).ready(function(){
-			// SHOW
-			$('#nav-toggle').on('click', function(e){
-				e.preventDefault();
-				$('#nav-menu').toggleClass('show');
-			});
-			// CLOSE
-			$('#nav-close').on('click', function(e){
-				e.preventDefault();
-				$('#nav-menu').removeClass('show');
-			});
-			// REMOVE MENU
-			$('.nav__link').on('click', function(e){
-				e.preventDefault();
-				$('#nav-menu').removeClass('show');
-			});
-			// PERCENTAGE SKILLS
-			$('.skills__bar').each(function(indice, element){
-				$(this).width($(this).attr('data-percent')+'%');
-			});
-			// SCROLL
-			$(window).on('scroll', function(){
-				const scrollY = window.pageYOffset;
-
-				$('section').each(function(index, element){
-					const sectionHeight = element.offsetHeight;
-					const sectionTop = element.offsetTop -50;
-					const sectionId = element.getAttribute('id');
-
-					if(scrollY > sectionTop && scrollY <= sectionTop + sectionHeight){
-						$('.nav__menu a[href="#'+sectionId+'"]').addClass('active');
-					} else {
-						$('.nav__menu a[href="#'+sectionId+'"]').removeClass('active');
-					}
-				});
-			});
-		});
-	</script>
+	<script src="{% static 'js/index/index.js' %}"></script>
 </body>
 </html>
